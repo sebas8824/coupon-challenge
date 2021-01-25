@@ -20,3 +20,16 @@ The service is running in AWS in the following url
 http://ec2-15-228-36-37.sa-east-1.compute.amazonaws.com:8080/coupon
 
 Remember, is a POST method.
+
+## Application explanation
+
+Basically this API is built with spring-boot where the `CouponController`
+exposes the `coupon` endpoint and this sends the request to the `PriceService` component.
+In this `PriceService` component the application takes the array and creates a `stream`, applies 
+a `distinct` operation and sequentially makes a http call using a web client built with `OkHttp`, which 
+transforms the response to an object that has two fields `id` and `price`.
+
+Then, back to the `PriceService`, you will find the `calculate` method that uses the signature:
+
+`List<String> calculate(Map<String, Float> items, Float amount)` and basically this sorts the `items` per price in a descending
+way using the stream sort method. After that it sums the item price and ensures that it doesn't go past the `amount`.
