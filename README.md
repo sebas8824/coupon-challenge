@@ -11,9 +11,12 @@ The service exposes a POST endpoint `/coupon` which receives the following heade
 
 Where `item_ids` is an array of product ids of **Mercado Libre** page and the `amount` is the value of the coupon where the items will be selected spending the max amount possible.
 
-To run locally this application, please clone this repository and import it as a maven project, then run it.
+To run locally this application, please clone this repository and import it as a maven project, then run it at 
+http://localhost:8080/coupon
 
 Docker image available at https://hub.docker.com/r/sebas8824/coupon
 
 The service is running in AWS in the following url 
 http://ec2-15-228-36-37.sa-east-1.compute.amazonaws.com:8080/coupon
+
+Remember, is a POST method.
