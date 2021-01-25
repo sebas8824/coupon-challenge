@@ -33,3 +33,6 @@ Then, back to the `PriceService`, you will find the `calculate` method that uses
 
 `List<String> calculate(Map<String, Float> items, Float amount)` and basically this sorts the `items` per price in a descending
 way using the stream sort method. After that it sums the item price and ensures that it doesn't go past the `amount`.
+
+In this solution I added the use of Hazelcast in order to cache the response, and this could increase the performance, even though
+the http calls are really slow, so I couldn't reach the goal of 10k requests per second.
